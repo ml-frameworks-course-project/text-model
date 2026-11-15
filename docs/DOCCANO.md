@@ -9,7 +9,7 @@
 1. Убедитесь, что в репозитории есть файл [`data/manual_candidates/annotation_input.jsonl`](../data/manual_candidates/annotation_input.jsonl).
 2. Откройте [кодбук](CODEBOOK.md) и согласуйте его версию до начала разметки.
 3. Передайте обоим разметчикам одинаковый `annotation_input.jsonl` и кодбук. В каждой строке есть `id`, `text` и пустой список `label`; исходной метки в файле нет.
-4. Не открывайте до завершения независимой разметки `provenance_private.jsonl`, `selection_stats.json` и `collect_candidates.py`: в них есть предполагаемые метки или параметры отбора.
+4. Не открывайте до завершения независимой разметки `provenance_private.jsonl`, `selection_stats.json`, `stable_id_map.json` и `collect_candidates.py`: в них есть предполагаемые метки или параметры отбора.
 
 Файлы с предварительными метками находятся в репозитории. До окончания разметки не открывайте их и не показывайте друг другу свои ответы.
 
