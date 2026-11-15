@@ -69,7 +69,7 @@ OUT.mkdir(parents=True,exist_ok=False)
 annot=[]; manifest=[]
 for i,it in enumerate(chosen,1):
     ident=f'TXT-{i:03d}'
-    annot.append({'id':ident,'text':it['text']})
+    annot.append({'id':ident,'text':it['text'],'label':[]})
     manifest.append({'id':ident,'source_dataset':it['source'],'source_revision':SHAS[it['source']],'source_split':it['split'],'source_row':it['row'],'source_record_id':it.get('source_id',''),'source_url':f'https://huggingface.co/datasets/{it["source"]}/tree/{SHAS[it["source"]]}','license':it['license'],'collected_on':'2026-11-15','source_label_candidate':it['label'],'category_or_scenario':it['category'],'context_note':('Scenario 1 user query; excerpt uses attack email only; full other email absent' if it['source'].startswith('microsoft/') else 'Original prompt; task or instruction hierarchy may be absent'),'annotation_status':'unreviewed'})
 for name,seq in [('annotation_input.jsonl',annot),('provenance_private.jsonl',manifest)]:
     with (OUT/name).open('w',encoding='utf8',newline='\n') as f:
