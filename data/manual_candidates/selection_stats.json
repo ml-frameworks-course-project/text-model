@@ -6,12 +6,12 @@
   },
   "source_counts": {
     "('microsoft/llmail-inject-challenge', 1)": 32,
-    "('deepset/prompt-injections', 0)": 28,
+    "('leolee99/NotInject', 0)": 65,
     "('deepset/prompt-injections', 1)": 25,
-    "('leolee99/NotInject', 0)": 65
+    "('deepset/prompt-injections', 0)": 28
   },
   "excluded": {
-    "candidate_near_duplicate": 11,
+    "candidate_near_duplicate": 7,
     "selection_duplicates": 2
   },
   "baseline_rows": 43425,

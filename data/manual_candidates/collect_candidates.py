@@ -1,5 +1,11 @@
 import collections, datetime, hashlib, json, random, re, unicodedata
 from pathlib import Path
+from langdetect import detect, DetectorFactory, LangDetectException
+DetectorFactory.seed = 52
+def is_english(text):
+    try: return detect(text) == "en"
+    except LangDetectException: return False
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -49,6 +55,10 @@ print('candidate pool',len(items),flush=True)
 rng=random.Random(52); rng.shuffle(items); chosen=[]; seen=set(); counts=collections.Counter(); excluded=collections.Counter()
 targets={('leolee99/NotInject',0):65,('deepset/prompt-injections',0):28,('deepset/prompt-injections',1):25,('microsoft/llmail-inject-challenge',1):32}
 for it in items:
+    # Manual review found mixed German and English in these source rows.
+    if it['source'] == 'deepset/prompt-injections' and it['row'] in {492, 513, 516, 519, 528, 540, 545}: continue
+    if not is_english(it['raw']): continue
+    if it['source'].startswith('microsoft/') and not is_english(it['text']): continue
     key=(it['source'],it['label'])
     if counts[key]>=targets[key]: continue
     n=norm(it['raw']); full=norm(it['text'])
@@ -65,6 +75,17 @@ for it in items:
 print('selected',len(chosen),counts,'excluded',excluded,flush=True)
 if counts != collections.Counter(targets): raise RuntimeError('insufficient candidate counts')
 rng.shuffle(chosen)
+# Preserve IDs of retained examples from the first selection.
+registry = json.loads((Path(__file__).parent / 'stable_id_map.json').read_text(encoding='utf8'))
+old_ids = {(x['source_dataset'], x['source_split'], x['source_row']): x['id'] for x in registry}
+source_key = lambda x: (x['source'], x['split'], x['row'])
+assigned = {old_ids[source_key(x)]: x for x in chosen if source_key(x) in old_ids}
+remaining = iter(x for x in chosen if source_key(x) not in old_ids)
+ordered = []
+for i in range(1, 151):
+    ident = f'TXT-{i:03d}'
+    ordered.append(assigned[ident] if ident in assigned else next(remaining))
+chosen = ordered
 OUT.mkdir(parents=True,exist_ok=False)
 annot=[]; manifest=[]
 for i,it in enumerate(chosen,1):
