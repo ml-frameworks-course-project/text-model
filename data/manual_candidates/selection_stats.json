@@ -1,0 +1,20 @@
+{
+  "total": 150,
+  "targets": {
+    "class_0": 93,
+    "class_1": 57
+  },
+  "source_counts": {
+    "('microsoft/llmail-inject-challenge', 1)": 32,
+    "('deepset/prompt-injections', 0)": 28,
+    "('deepset/prompt-injections', 1)": 25,
+    "('leolee99/NotInject', 0)": 65
+  },
+  "excluded": {
+    "candidate_near_duplicate": 11,
+    "selection_duplicates": 2
+  },
+  "baseline_rows": 43425,
+  "baseline_revision": "a5234cb1f5cdb256600cab64b8c961195b5e8404",
+  "seed": 52
+}
