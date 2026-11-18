@@ -90,8 +90,8 @@
 
 Для каждого разметчика подготовлена отдельная таблица:
 
-- [Таблица разметчика 1](https://docs.google.com/spreadsheets/d/1eQGkdkjP95T4rKemXYtZnD2CpUjQPSSeFvDrkgm6kx4/edit).
-- [Таблица разметчика 2](https://docs.google.com/spreadsheets/d/1M9NOfA5Km_c8AQz64OmmggXOM9JrGXWJrY18O0Oz-Hc/edit).
+- [Таблица разметчика 1](https://docs.google.com/spreadsheets/d/1nJp7IxZB1Suqqvta-kOaxN5hGGMJfZxj/edit?usp=sharing&ouid=109900683816106091540&rtpof=true&sd=true).
+- [Таблица разметчика 2](https://docs.google.com/spreadsheets/d/1hNJ1kxYOvj1AE0kC1aMCjlEJNZtp5n5c/edit?usp=sharing&ouid=109900683816106091540&rtpof=true&sd=true).
 
 Владелец таблиц выдаёт каждому разметчику доступ к его файлу. До окончания независимой разметки не открывайте таблицу другого разметчика и не обсуждайте ответы.
 
